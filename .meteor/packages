@@ -24,3 +24,5 @@ twbs:bootstrap
 less
 kadira:flow-router
 meteortoys:allthings
+fortawesome:fontawesome
+aslagle:reactive-table

@@ -1,9 +1,8 @@
+
 <head>
   <title>TableFor4</title>
 </head>
-
 <body>
-
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -62,18 +61,25 @@
                     <hr class="star-primary">
                 </div>
             </div>
-            <div class="row">
+            <div class="row page-scroll">
               <div>
                 <p>
                 A meal used to stand for more than just consumption of food. It was a symbol for friendship, companionship and love. We believe that
                 this tradition should be preserved even in our fast-paced society today. "Table for 4" is created to bring 4 strangers together for a simple meal and hopefully through this meal, friendships and connections can be made. 
                 </p>
               </div>
+              <br>
+              <div class="col-lg-12 text-center">
+                  <h2>How this app works</h2>
+                  <hr class="star-primary">
+                  <p> Shove this application up your ass you fucking twat. Have a nice day. </p>
+              </div>
               <div class="col-lg-8 col-lg-offset-2 text-center">
-                  <a href="#contact" class="btn btn-success btn-lg btn-outline">
+                  <a href="#contact" class="btn btn-success btn-lg btn-outline page-scroll">
                     <i class="fa join-us"></i> Join us now!
                   </a>
               </div>
+
             </div>            
         </div>
     </section>
@@ -85,7 +91,9 @@
                 <div class="col-lg-12 text-center">
                     <h2>Table status</h2>
                     <hr class="star-light">
+                    
                 </div>
+                {{> tableInfo}}
             </div>
 
         </div>
@@ -96,7 +104,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contact Me</h2>
+                    <h2>Sign up now!</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -114,22 +122,8 @@
                         </div>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Email Address</label>
-                                <input type="email" class="form-control" placeholder="Email Address" id="email" required data-validation-required-message="Please enter your email address.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Phone Number</label>
                                 <input type="tel" class="form-control" placeholder="Phone Number" id="phone" required data-validation-required-message="Please enter your phone number.">
-                                <p class="help-block text-danger"></p>
-                            </div>
-                        </div>
-                        <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                                <label>Message</label>
-                                <textarea rows="5" class="form-control" placeholder="Message" id="message" required data-validation-required-message="Please enter a message."></textarea>
                                 <p class="help-block text-danger"></p>
                             </div>
                         </div>
@@ -148,41 +142,6 @@
 
     <!-- Footer -->
     <footer class="text-center">
-        <div class="footer-above">
-            <div class="container">
-                <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h3>Location</h3>
-                        <p>3481 Melrose Place
-                            <br>Beverly Hills, CA 90210</p>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Around the Web</h3>
-                        <ul class="list-inline">
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>About Freelancer</h3>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="footer-below">
             <div class="container">
                 <div class="row">
@@ -218,3 +177,24 @@
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 </body>
+
+<template name="tableInfo">
+    <div class = "table" >
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class = "table" >
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class = "table" >
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class = "table" >
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class = "table" >
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class = "table" >
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+</template>
