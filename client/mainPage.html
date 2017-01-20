@@ -1,0 +1,198 @@
+<template name="mainPage">
+<body>
+    
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Table for 4</a>
+            </div>
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#about">About us</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#status">Status</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#join">Join us</a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header id = "page-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <img class="img-responsive img-rounded" src="img/foodTable.jpg" alt="" width="500" height="300">
+                    <div class="intro-text">
+                        <span class="name">Table for 4</span>
+                        <hr class="star-light">
+                        <span class="skills">Food - Friends - Joy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Grid Section -->
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>About this app</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row page-scroll">
+              <div>
+                <p>
+                A meal used to stand for more than just consumption of food. It was a symbol for friendship, companionship and love. We believe that
+                this tradition should be preserved even in our fast-paced society today. "Table for 4" is created to bring 4 strangers together for a simple meal and hopefully through this meal, friendships and connections can be made. 
+                </p>
+              </div>
+              <br>
+              <div class="col-lg-12 text-center">
+                  <h2>How this app works</h2>
+                  <hr class="star-primary">
+                  <p> Shove this application up your ass you fucking twat. Have a nice day. </p>
+              </div>
+              <div class="col-lg-8 col-lg-offset-2 text-center">
+                  <a href="#join" class="btn btn-success btn-lg btn-outline page-scroll">
+                    <i class="fa join-us"></i> Join us now!
+                  </a>
+              </div>
+
+            </div>            
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="success" id="status">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Table status</h2>
+                    <hr class="star-light">
+                </div>
+                <div class="row">
+                    {{> tableInfo}}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="join">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Sign up now!</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
+                    <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
+                    <form name="sentMessage" id="contactForm" novalidate>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Name</label>
+                                <input type="text" class="form-control" placeholder="Name" id="name" required data-validation-required-message="Please enter your name.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Mobile Number</label>
+                                <input type="tel" class="form-control" placeholder="Phone Number" id="mobileNumber" required data-validation-required-message="Please enter your Mobile number.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Telegram ID</label>
+                                <input type="tel" class="form-control" placeholder="Telegram ID" id="telegramID" required data-validation-required-message="Please enter your Telegram ID.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="button" class="btn btn-success btn-lg" id="join-us-button">Send</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; FSociety 2017
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+</body>
+</template>
+
+<template name="tableInfo">
+    <div class="table col-sm-12 col-lg-4">
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class="table col-sm-12 col-lg-4">
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class="table col-sm-12 col-lg-4">
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class="table col-sm-12 col-lg-4">
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class="table col-sm-12 col-lg-4">
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+    <div class="table col-sm-12 col-lg-4">
+        {{> reactiveTable collection=myCollection settings=mySettings}}
+    </div>
+</template>
