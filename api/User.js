@@ -1,13 +1,5 @@
-/*const Schema = {};
-var currMoment = new Date();
-currMoment.setMonth(currMoment.getMonth() + 1);
-var month = currMoment.getMonth();
-var year = currMoment.getFullYear();
+import { Mongo } from 'meteor/mongo';
 
-Schema.User = new SimpleSchema({
-    name: {type: String, label: 'name', defaultValue: "undefined"},
-    mobileNumber: {type: String, label: 'mobileNumer', defaultValue: "undefined"},
-    TelegramID : {type: String, label: 'TelegramID', defaultValue: "undefined"},
-});
+export const User = new Mongo.Collection('User');
 
-Meteor.users.attachSchema(Schema.User);*/
+// User database to store temp details of current user
