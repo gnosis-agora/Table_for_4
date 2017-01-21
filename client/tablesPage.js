@@ -20,11 +20,80 @@ Template.tablesPage.events({
 		//Session used to redirect link to other webpages
 		Session.set("templateName", "mainPage");
 	},
+
+	"click #find-me-a-table-btn": function() {
+		var activeTables = TablesCollection.find({}).fetch();
+		if (chosenTiming == "" || chosenLocation == ""){
+			alert("Please choose your desired location and timing");
+		}
+		else{
+			currUser = User.find({}).fetch()[0];
+			var allocated = false;
+			var chosenTableID = "";
+
+			// check if user already in one of the table
+			var isInside = false;
+			for (var x=0;x<activeTables.length;x++){
+				var table = activeTables[x];
+				if (table.occupants.indexOf(currUser.telegramID) != -1){
+					isInside = true;
+				}
+			}
+
+			if (!isInside){
+				// find empty slots in existing tables
+				for (var x=0;x<activeTables.length;x++){
+					var table = activeTables[x];
+					if (table.location == chosenLocation && table.timing == chosenTiming && table.occupants.length < 4){
+						// check if user is already in current table
+						if (table.occupants.indexOf(currUser.telegramID) != -1){
+							alert("Your reservation has already been recorded. Please check your telegram.");
+						}
+						else{
+							table.occupants.push(currUser.telegramID);
+							chosenTableID = table._id;
+							// update the table in the database
+							TablesCollection.update({_id: chosenTableID}, table);
+							alert("Great news! We've found a table for you!");
+						
+						}
+						allocated = true;
+					}
+				}
+
+				// if no existing tables fit the requirements
+				if (!allocated){
+					var table = {
+						location : chosenLocation,
+						timing : chosenTiming,
+						occupants : [currUser.telegramID]
+					}
+					alert("Your table has been created! Please check your telegram.")
+					TablesCollection.insert(table);
+				}
+				
+				else{
+					var chosenTable = TablesCollection.find({_id: chosenTableID}).fetch()[0];
+					// check if allocatedTable is full
+					if (chosenTable.occupants.length >= 4){
+						// remove full table from mongoDB
+						TablesCollection.remove({_id: chosenTableID});
+						// send details to telegram bot
+						// ZAMES TO DO
+					}
+				}
+			}
+			else{
+				alert("We've already found a table for you. Please check your telegram.");
+			}
+			
+		}
+	},	
 });
 
 Template.welcomeMessage.helpers({
 	telegramID : function() {
-		currUser = User.find({}).fetch()[0]
+		currUser = User.find({}).fetch()[0];
 		return currUser.telegramID;
 	}
 });
@@ -82,5 +151,6 @@ Template.timingDropDown.events({
 		$('.timing-buttons').not(this).removeClass('active');   
 		$("#"+this.timingID).toggleClass("active");
 		chosenTiming = this.timingID;
-	}
+	},
+
 });

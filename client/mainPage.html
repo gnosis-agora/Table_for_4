@@ -163,22 +163,11 @@
 </template>
 
 <template name="tableInfo">
+
+
     <div class="table col-sm-12 col-lg-4">
-        {{> reactiveTable collection=myCollection settings=mySettings}}
-    </div>
-    <div class="table col-sm-12 col-lg-4">
-        {{> reactiveTable collection=myCollection settings=mySettings}}
-    </div>
-    <div class="table col-sm-12 col-lg-4">
-        {{> reactiveTable collection=myCollection settings=mySettings}}
-    </div>
-    <div class="table col-sm-12 col-lg-4">
-        {{> reactiveTable collection=myCollection settings=mySettings}}
-    </div>
-    <div class="table col-sm-12 col-lg-4">
-        {{> reactiveTable collection=myCollection settings=mySettings}}
-    </div>
-    <div class="table col-sm-12 col-lg-4">
-        {{> reactiveTable collection=myCollection settings=mySettings}}
+    {{#each TablesCollection}}
+        {{> reactiveTable collection=occupants settings=mySettings }}
+    {{/each}}
     </div>
 </template>

@@ -17,8 +17,8 @@ Template.mainPage.events({
 });
 
 Template.tableInfo.helpers({
-	myCollection : function(){
-		return TablesCollection;
+	TablesCollection : function(){
+		return TablesCollection.find({}).fetch();
 	},
 
 	mySettings : function(){
@@ -27,7 +27,7 @@ Template.tableInfo.helpers({
 			showNavigationRowsPerPage : false,
 			showNavigation: 'never',
 			fields: [
-				{key: 'text', label: "random text", sortable: false}
+				{field : null, label: "something", sortable: false}
 			]
 		};
 	},
