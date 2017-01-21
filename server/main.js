@@ -6,8 +6,6 @@ Meteor.startup(() => {
 	if (User.find().count() == 0){
   		User.insert({
 	  		checkValue: 1,
-			name : "",
-			mobileNumber : "",
 			telegramID : "",
   		});
 	}

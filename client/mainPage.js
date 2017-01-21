@@ -10,8 +10,6 @@ Template.mainPage.events({
 	"click #join-us-button": function(){
 		//Session used to redirect link to other webpages
 		User.update({_id:User.findOne({checkValue: 1})['_id']},{$set:{
-			name : $("#name").val(),
-			mobileNumber : $("#mobileNumber").val(),
 			telegramID : $("#telegramID").val(),
 		}});
 		Session.set("templateName", "tablesPage");
