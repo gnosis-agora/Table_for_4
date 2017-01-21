@@ -76,8 +76,7 @@ Template.tablesPage.events({
 					var chosenTable = TablesCollection.find({_id: chosenTableID}).fetch()[0];
 					// check if allocatedTable is full
 					if (chosenTable.occupants.length >= 4){
-						// remove full table from mongoDB
-						TablesCollection.remove({_id: chosenTableID});
+						
 						// send details to telegram bot
 						// ZAMES TO DO
 					}
@@ -120,7 +119,7 @@ Template.locationDropDown.events({
 	"click .location-buttons": function(e){
 		$('.location-buttons').not(this).removeClass('active');   
 		$("#"+this.locationID).toggleClass("active");
-		chosenLocation = this.locationID
+		chosenLocation = this.locationName;
 ;	}
 });
 
@@ -150,7 +149,43 @@ Template.timingDropDown.events({
 	"click .timing-buttons": function(){
 		$('.timing-buttons').not(this).removeClass('active');   
 		$("#"+this.timingID).toggleClass("active");
-		chosenTiming = this.timingID;
+		chosenTiming = this.timingName;
 	},
 
+});
+
+Template.tableOption.helpers({
+	TablesCollection: function(){
+		return TablesCollection.find({}).fetch();
+	},
+
+	checkFullTable: function(occupants){
+		return occupants.length < 4;
+	},
+});
+
+Template.tableOption.events({
+
+	"click .join-table-btn": function(){
+		var activeTables = TablesCollection.find({}).fetch();
+		var isInside = false;
+		currUser = User.find({}).fetch()[0];
+		var table = TablesCollection.find({_id: this._id}).fetch()[0];
+
+		// check if user already in one of the table
+		for (var x=0;x<activeTables.length;x++){
+			var table = activeTables[x];
+			if (table.occupants.indexOf(currUser.telegramID) != -1){
+				isInside = true;
+			}
+		}
+		if (!isInside){
+			table.occupants.push(currUser.telegramID);
+			TablesCollection.update({_id: this._id}, table);
+			alert("You have successfully joined this table! Please check your telegram for more information.");
+		}
+		else{
+			alert("We've already found a table for you. Please check your telegram.");
+		}
+	},
 });

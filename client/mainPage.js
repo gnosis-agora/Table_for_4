@@ -5,7 +5,6 @@ import { User } from '/api/User';
 import './mainPage.html';
 
 
-
 Template.mainPage.events({
 	"click #join-us-button": function(){
 		//Session used to redirect link to other webpages
@@ -17,21 +16,10 @@ Template.mainPage.events({
 });
 
 Template.tableInfo.helpers({
-	TablesCollection : function(){
+
+	HTMLTablesCollection: function(){
 		return TablesCollection.find({}).fetch();
 	},
-
-	mySettings : function(){
-		return {
-			showFilter : false, 
-			showNavigationRowsPerPage : false,
-			showNavigation: 'never',
-			fields: [
-				{field : null, label: "something", sortable: false}
-			]
-		};
-	},
-
 
 });
 

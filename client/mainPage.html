@@ -1,6 +1,46 @@
 <template name="mainPage">
 <body>
-    
+    <style>
+        table {
+            color: #333;
+            font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            border-collapse:collapse;
+            max-width: 350px;
+            width: 350px;
+            font-weight: 700;
+
+        }
+
+        td, th {
+            border: 1px solid transparent; /* No more visible border */
+            height: 30px;
+            transition: all 0.3s; /* Simple transition for hover effect */
+        }
+
+        th {
+            background: #DFDFDF; /* Darken header a bit */
+            font-weight: bold;
+        }
+
+        td {
+            background: #FAFAFA;
+            text-align: center;
+        }
+
+        /* Cells in even rows (2,4,6...) are one color */
+        tr:nth-child(even) td { background: #F1F1F1; }
+
+        /* Cells in odd rows (1,3,5...) are another (excludes header cells) */
+        tr:nth-child(odd) td { background: #FEFEFE; }
+
+        tr td:hover { background: #666; color: #FFF; } /* Hover cell effect! */ 
+
+        .table-options{
+            padding: 2%;
+        }
+
+    </style>    
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
         <div class="container">
@@ -163,11 +203,27 @@
 </template>
 
 <template name="tableInfo">
-
-
-    <div class="table col-sm-12 col-lg-4">
-    {{#each TablesCollection}}
-        {{> reactiveTable collection=occupants settings=mySettings }}
-    {{/each}}
-    </div>
+    
+        
+        {{#each HTMLTablesCollection}}
+        <div class="row col-sm-12 col-md-4 table-options">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>Location: {{location}} <br> Timing: {{timing}}</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {{#each occupants}}
+                    <tr>
+                    <td>{{this}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+                
+            </table>
+        </div>
+        {{/each}}
+        
 </template>
