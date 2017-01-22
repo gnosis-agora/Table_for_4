@@ -77,8 +77,6 @@ Template.tablesPage.events({
 					// check if allocatedTable is full
 					if (chosenTable.occupants.length >= 4){
 						
-						// send details to telegram bot
-						// ZAMES TO DO
 					}
 				}
 			}
@@ -182,6 +180,7 @@ Template.tableOption.events({
 		if (!isInside){
 			table.occupants.push(currUser.telegramID);
 			TablesCollection.update({_id: this._id}, table);
+
 			alert("You have successfully joined this table! Please check your telegram for more information.");
 		}
 		else{
