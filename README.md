@@ -1,6 +1,8 @@
 # Table_for_4
 A meal planning application for 4 strangers to meet people and make friends over a meal.
+
 This was a project by @gnosis-agora and @zameschua for NUS' Hack & Roll 2017.
+
 Check out our Devpost page at https://devpost.com/software/table-for-4
 
 ### Dependencies
