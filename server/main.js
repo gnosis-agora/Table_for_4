@@ -38,10 +38,14 @@ Meteor.startup(() => {
 					if (table.occupants.length < 4) {
 						;
 					} else {
-						return "Please wait while more people join your table!";
+						TelegramBot.send("Please wait while more people join your table!", original.chat.id);
 					}
 				}
 			}
+		}
+		Meteor.call('addedUserToTableAlert', username, table._id);
+		if (table.occupants.length === 4) {
+			Meteor.call('tableIsFullAlert', table._id);
 		}
     });
     TelegramBot.addListener('/leave', function(command, username, original) {
@@ -87,37 +91,31 @@ Meteor.methods({
 	    var activeTables = TablesCollection.find({}).fetch();
 	    for (var x=0; x<activeTables.length; x++){
 			var table = activeTables[x];
-
 			for (var i = 0; i<table.occupants.length; i++) {
 				if (table.occupants[i] === username) {
 					table.chatIDs.forEach(function(chatID) {
 						TelegramBot.send("@" + username + " has joined your table!", chatID);
 					});
 				}
+				break;
 			}
 	  	}
 	},
 	tableIsFullAlert: function (tableID) {
-	    var activeTables = TablesCollection.find({}).fetch();
-	    for (var x=0; x<activeTables.length; x++){
-			var table = activeTables[x];
+		var table = TablesCollection.findOne({_id:tableID});
+		console.log(table);
+		table.chatIDs.forEach(function(chatID) {
+			var chatInfo = TelegramBot.method("getChat", {"chat_id": chatID});
+			var username = chatInfo.result.username
+			var firstName = chatInfo.result.first_name
 
-			table.chatIDs.forEach(function(chatID) {
-				var chatInfo = TelegramBot.method("getChat", {"chat_id": chatID});
-				var username = chatInfo.result.username
-				var firstName = chatInfo.result.first_name
-
-				var tableMates = [];
-				for (var i = 0; i<table.occupants.length; i++) {
-					table.occupants.forEach(function(tableMate) {
-						if (tableMate != username) {
-							tableMates.push(tableMate);
-						}
-					});
+			var tableMates = [];
+			table.occupants.forEach(function(tableMate) {
+				if (tableMate != username) {
+					tableMates.push(tableMate);
 				}
-
-				TelegramBot.send("Thank you for your patience " + firstName + "! Your table-mates are @" + tableMates[0] + ", @" + tableMates[1] + ", and @" + tableMates[2]  + ". Enjoy your meal!", chatID);
-			});
-	  	}
+			});	
+			TelegramBot.send("Thank you for your patience " + firstName + "! Your table-mates are @" + tableMates[0] + ", @" + tableMates[1] + ", and @" + tableMates[2]  + ". Enjoy your meal!", chatID);
+		});
 	},
 });
