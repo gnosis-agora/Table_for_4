@@ -7,9 +7,11 @@ Check out our Devpost page at https://devpost.com/software/table-for-4
 Meteor.js
 
 ### To Run
+```
 cd Table_for_4
 npm install
 meteor
+```
 
 ### Screenshots
 ![app_screenshot_1](https://github.com/gnosis-agora/Table_for_4/blob/master/public/img/web_screenshot_1.PNG "app_screenshot_1")
